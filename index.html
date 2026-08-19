@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maximcine Studios — Nebula Strike: Galactic Assault</title>
+<meta name="description" content="Maximcine Studios builds pocket-sized space combat. Nebula Strike: Galactic Assault, out now on Google Play.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0c16;
+    --panel: #12152668;
+    --panel-solid: #12152a;
+    --line: #262a44;
+    --text: #e7e6f2;
+    --text-dim: #9a9cba;
+    --accent: #8b6bff;
+    --accent-2: #45e0c4;
+    --gold: #f2c064;
+    --radius: 14px;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a{ color: inherit; }
+
+  .display{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Starfield */
+  #stars{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(10,12,22,0.65);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size: 1.05rem;
+  }
+  .brand-mark{
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display:grid; place-items:center;
+    font-size: 13px;
+    color: #0a0c16;
+    font-weight:700;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 28px;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+  }
+  nav ul a:hover{ color: var(--text); }
+
+  /* Hero */
+  .hero{
+    padding: 110px 0 90px;
+    position: relative;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent-2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px; height:8px;
+    border-radius:50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 12px var(--accent-2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.35; }
+  }
+  h1{
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.02;
+    max-width: 780px;
+  }
+  h1 .accent{
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p{
+    margin-top: 24px;
+    max-width: 520px;
+    color: var(--text-dim);
+    font-size: 1.08rem;
+  }
+  .cta-row{
+    display:flex;
+    gap: 14px;
+    margin-top: 38px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration:none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(100deg, var(--accent), #6f4dff);
+    color: #fff;
+    box-shadow: 0 8px 30px -8px rgba(139,107,255,0.6);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost{
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .btn-ghost:hover{ border-color: var(--accent-2); }
+
+  /* HUD readout strip - signature element */
+  .hud{
+    margin-top: 64px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    padding: 20px 26px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 640px;
+  }
+  .hud-item .mono{
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hud-item .val{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  section{ padding: 90px 0; border-top: 1px solid var(--line); }
+
+  .section-head{ max-width: 560px; margin-bottom: 48px; }
+  .section-head .eyebrow{ color: var(--gold); }
+  .section-head .eyebrow::before{ background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+  .section-head h2{ font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+  .section-head p{ color: var(--text-dim); margin-top: 14px; }
+
+  .feature-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+    background: linear-gradient(180deg, rgba(139,107,255,0.05), transparent);
+  }
+  .feature .idx{
+    font-family:'JetBrains Mono', monospace;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+  .feature h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    margin: 12px 0 8px;
+  }
+  .feature p{ color: var(--text-dim); font-size: 0.94rem; }
+
+  .about{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items:start;
+  }
+  .about-text p{ color: var(--text-dim); margin-bottom: 16px; max-width: 480px; }
+  .about-text p:first-child{ color: var(--text); }
+
+  .stat-panel{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel-solid);
+    padding: 28px;
+  }
+  .stat-panel .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-panel ul{ list-style:none; margin-top: 18px; }
+  .stat-panel li{
+    display:flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .stat-panel li:last-child{ border-bottom:none; }
+  .stat-panel li span:last-child{ color: var(--accent-2); font-family:'JetBrains Mono', monospace; }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 46px 0;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+  .foot-links{ display:flex; gap: 22px; list-style:none; }
+  .foot-links a:hover{ color: var(--text); }
+
+  @media (max-width: 760px){
+    .hud{ grid-template-columns: 1fr; }
+    .feature-grid{ grid-template-columns: 1fr; }
+    .about{ grid-template-columns: 1fr; }
+    nav ul{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow::before{ animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <span class="display">Maximcine Studios</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#game">Nebula Strike</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none; padding-top:110px;">
+    <div class="wrap">
+      <div class="eyebrow">Now live on Google Play</div>
+      <h1 class="display">Hold the line at the <span class="accent">edge of the galaxy.</span></h1>
+      <p>Nebula Strike: Galactic Assault is a fast, pocket-sized space shooter from Maximcine Studios — dodge, dash, and blast your way through waves of hostiles one run at a time.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#" id="https://play.google.com/store/apps/details?id=com.nebulastrike.game">Get it on Google Play</a>
+        <a class="btn btn-ghost" href="#game">See what's inside</a>
+      </div>
+
+      <div class="hud">
+        <div class="hud-item">
+          <div class="mono">Platform</div>
+          <div class="val">Android</div>
+        </div>
+        <div class="hud-item">
+          <div class="mono">Genre</div>
+          <div class="val">Arcade Shooter</div>
+        </div>
+        <div class="hud-item">
+          <div class="mono">Status</div>
+          <div class="val">Live</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="game">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">The Game</div>
+        <h2 class="display">Built for short runs, tuned for high scores.</h2>
+        <p>Every session is a fresh sortie — pick up power-ups, chain kills, and push one wave further than last time.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="idx mono">01</div>
+          <h3 class="display">Wave-based combat</h3>
+          <p>Escalating enemy formations keep every run different, with bosses gating the toughest stretches.</p>
+        </div>
+        <div class="feature">
+          <div class="idx mono">02</div>
+          <h3 class="display">Daily rewards</h3>
+          <p>Log in, claim a bonus, and keep your ship upgraded without grinding for hours.</p>
+        </div>
+        <div class="feature">
+          <div class="idx mono">03</div>
+          <h3 class="display">One-thumb controls</h3>
+          <p>Designed for quick sessions on the go — pick it up, survive a wave, put it down.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio">
+    <div class="wrap about">
+      <div class="about-text">
+        <div class="section-head" style="margin-bottom:22px;">
+          <div class="eyebrow">The Studio</div>
+          <h2 class="display">Maximcine Studios</h2>
+        </div>
+        <p>Maximcine Studios is an independent games studio building small, focused mobile games — the kind you open for five minutes and stay for twenty.</p>
+        <p>Nebula Strike: Galactic Assault is our first release, built with Capacitor for Android with a strong emphasis on tight controls, fast feedback, and a game that respects your time.</p>
+        <p>We're currently prototyping our next project, an early 3D exploration built in Godot — more on that soon.</p>
+      </div>
+      <div class="stat-panel">
+        <div class="label">Studio log</div>
+        <ul class="mono">
+          <li><span>Founded</span><span>Indie</span></li>
+          <li><span>First release</span><span>Nebula Strike</span></li>
+          <li><span>Engine</span><span>Capacitor / Cordova</span></li>
+          <li><span>Next project</span><span>In prototype</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap foot-row">
+    <span>© <span id="year"></span> Maximcine Studios. All rights reserved.</span>
+    <ul class="foot-links">
+      <li><a href="https://play.google.com/store/apps/details?id=com.nebulastrike.game" target="_blank">Google Play</a></li>
+      <li><a href="mailto:maximcinedev.team@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Subtle starfield — restrained, ambient, respects reduced motion
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, stars = [];
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    stars = Array.from({length: Math.floor((w*h)/9000)}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*1.3 + 0.2,
+      speed: Math.random()*0.15 + 0.02,
+      alpha: Math.random()*0.6 + 0.2
+    }));
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = '#0a0c16';
+    ctx.fillRect(0,0,w,h);
+    for(const s of stars){
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(231,230,242,${s.alpha})`;
+      ctx.fill();
+      if(!reduceMotion){
+        s.y += s.speed;
+        if(s.y > h) s.y = 0;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+</body>
+</html>
