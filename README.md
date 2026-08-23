@@ -2,7 +2,7 @@
 
 
 
-Landing page for Maximcine Studios / Nebula Strike: Galactic Assault, plus the `app-ads.txt` file needed to pass Google AdMob's app verification.
+Landing page for Maximcine Studios
 
 
 
