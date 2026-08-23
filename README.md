@@ -10,7 +10,7 @@ Landing page for Maximcine Studios
 
 
 
-\- `index.html` — one-page site (studio + game info, no build step, no dependencies)
+\- `index.html` — one-page site with sub links
 
 \- `app-ads.txt` — required by AdMob to verify you're authorized to monetize this app
 
