@@ -255,6 +255,19 @@
   .stat-panel li:last-child{ border-bottom:none; }
   .stat-panel li span:last-child{ color: var(--accent-2); font-family:'JetBrains Mono', monospace; }
 
+  .faq{ max-width: 760px; }
+  .faq-item{
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .faq-item:first-child{ padding-top: 0; }
+  .faq-item h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .faq-item p{ color: var(--text-dim); font-size: 0.94rem; max-width: 620px; }
+
   footer{
     border-top: 1px solid var(--line);
     padding: 46px 0;
@@ -283,6 +296,71 @@
     * { scroll-behavior: auto !important; }
   }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Nebula Strike: Galactic Assault",
+  "description": "A fast, pocket-sized space shooter — dodge, dash, and blast through waves of hostiles one run at a time. Free to play on Android.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "genre": "Arcade Shooter",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Maximcine Studios",
+    "url": "https://maximcinedev.github.io/maximcine-studios-site"
+  },
+  "image": "https://maximcinedev.github.io/maximcine-studios-site/company_logo.png",
+  "url": "https://maximcinedev.github.io/maximcine-studios-site",
+  "sameAs": "https://play.google.com/store/apps/details?id=com.nebulastrike.game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Nebula Strike free to play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Nebula Strike: Galactic Assault is free to download and play on Android, with optional in-app purchases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Android version do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nebula Strike runs on modern Android devices available through Google Play. Check the Play Store listing for the exact minimum OS version."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long is a typical run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Runs are designed to be short, with most sessions lasting just a few minutes, so it's easy to play in quick bursts throughout the day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Nebula Strike have daily rewards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, log in each day to claim a bonus and keep your ship upgraded without heavy grinding."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -298,6 +376,7 @@
       <ul>
         <li><a href="#game">Nebula Strike</a></li>
         <li><a href="#studio">Studio</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -378,6 +457,33 @@
           <li><span>Engine</span><span>Capacitor / Cordova</span></li>
           <li><span>Next project</span><span>In prototype</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="display">Frequently asked questions</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Is Nebula Strike free to play?</h3>
+          <p>Yes — Nebula Strike: Galactic Assault is free to download and play on Android, with optional in-app purchases.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What Android version do I need?</h3>
+          <p>Nebula Strike runs on modern Android devices available through Google Play. Check the Play Store listing for the exact minimum OS version.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How long is a typical run?</h3>
+          <p>Runs are designed to be short — most sessions last just a few minutes, so it's easy to play in quick bursts throughout the day.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does Nebula Strike have daily rewards?</h3>
+          <p>Yes — log in each day to claim a bonus and keep your ship upgraded without heavy grinding.</p>
+        </div>
       </div>
     </div>
   </section>
