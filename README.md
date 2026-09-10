@@ -2,7 +2,7 @@
 
 
 
-Landing page for Maximcine Studios
+Website for Maximcine Studios
 
 
 
