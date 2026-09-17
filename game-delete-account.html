@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nebula Strike — Account & Data Deletion | Maximcine Studios</title>
+
+<meta name="description" content="Request deletion of your Nebula Strike: Galactic Assault player profile and associated game data.">
+
+<link rel="icon" type="image/png" href="company_logo.png">
+<link rel="apple-touch-icon" href="company_logo.png">
+
+<link rel="canonical" href="https://maximcinestudios.site/nebula-strike-delete-account">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#050710;
+    --bg-soft:#090c1a;
+    --panel:#0c0f20;
+    --panel-2:#10142b;
+    --line:rgba(255,255,255,0.09);
+    --line-soft:rgba(255,255,255,0.05);
+    --text:#eef1fa;
+    --text-dim:#8b8fae;
+    --accent:#2fc0ff;
+    --accent-2:#6f4de0;
+    --gold:#f0b429;
+    --danger:#ff667d;
+    --radius:16px;
+  }
+
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
+
+  .display{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+
+  .mono{
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  #stars{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;
+    top:-20%;
+    right:-10%;
+    width:900px;
+    height:900px;
+    background:radial-gradient(
+      circle at center,
+      rgba(111,77,224,0.24),
+      rgba(47,192,255,0.10) 45%,
+      transparent 70%
+    );
+    filter:blur(10px);
+    z-index:0;
+    pointer-events:none;
+  }
+
+  .wrap{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 28px;
+    position:relative;
+    z-index:1;
+  }
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(14px);
+    background:rgba(6,7,15,0.78);
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav{
+    max-width:1120px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.05rem;
+  }
+
+  .brand-mark{
+    width:28px;
+    height:28px;
+    border-radius:8px;
+    object-fit:cover;
+  }
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+    font-size:.92rem;
+    color:var(--text-dim);
+  }
+
+  nav a:hover{
+    color:var(--accent);
+  }
+
+  .hero{
+    padding:90px 0 45px;
+    text-align:center;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;
+    color:var(--accent);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+
+  h1{
+    font-size:clamp(2.2rem,5vw,3.5rem);
+    line-height:1.08;
+  }
+
+  h1 .accent{
+    background:linear-gradient(
+      100deg,
+      var(--chrome,#dfe4f0) 0%,
+      var(--accent) 55%,
+      var(--accent-2) 100%
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero p{
+    max-width:680px;
+    margin:22px auto 0;
+    color:var(--text-dim);
+    font-size:1.05rem;
+  }
+
+  .card{
+    margin:28px 0;
+    padding:32px;
+    background:linear-gradient(
+      145deg,
+      rgba(16,20,43,.94),
+      rgba(12,15,32,.94)
+    );
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:0 25px 70px rgba(0,0,0,.25);
+  }
+
+  .card h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.35rem;
+    margin-bottom:14px;
+  }
+
+  .card h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.05rem;
+    margin:24px 0 8px;
+  }
+
+  .card p{
+    color:var(--text-dim);
+    margin-bottom:14px;
+  }
+
+  .card ul{
+    padding-left:22px;
+    color:var(--text-dim);
+  }
+
+  .card li{
+    margin:8px 0;
+  }
+
+  .highlight{
+    border-left:3px solid var(--accent);
+    background:rgba(47,192,255,.06);
+    padding:18px 20px;
+    border-radius:10px;
+    margin:20px 0;
+  }
+
+  .highlight strong{
+    color:var(--text);
+  }
+
+  .warning{
+    border-left:3px solid var(--danger);
+    background:rgba(255,102,125,.06);
+    padding:18px 20px;
+    border-radius:10px;
+    margin:20px 0;
+  }
+
+  .steps{
+    counter-reset:step;
+    list-style:none !important;
+    padding:0 !important;
+  }
+
+  .steps li{
+    counter-increment:step;
+    position:relative;
+    padding-left:48px;
+    margin:22px 0;
+  }
+
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:0;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:white;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.8rem;
+    font-weight:500;
+  }
+
+  .btn-row{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 24px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:.95rem;
+    transition:.15s ease;
+  }
+
+  .btn-primary{
+    background:linear-gradient(100deg,var(--accent),var(--accent-2));
+    color:white;
+    box-shadow:0 8px 30px -6px rgba(47,192,255,.45);
+  }
+
+  .btn-primary:hover{
+    transform:translateY(-2px);
+  }
+
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--text);
+  }
+
+  .btn-ghost:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+
+  .updated{
+    text-align:center;
+    color:var(--text-dim);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    margin:35px 0 70px;
+  }
+
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:42px 0;
+  }
+
+  .foot-row{
+    max-width:1120px;
+    margin:auto;
+    padding:0 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    color:var(--text-dim);
+    font-size:.86rem;
+  }
+
+  .foot-links{
+    display:flex;
+    gap:20px;
+    list-style:none;
+  }
+
+  .foot-links a:hover{
+    color:var(--accent);
+  }
+
+  @media(max-width:700px){
+    nav ul{
+      display:none;
+    }
+
+    .hero{
+      padding-top:65px;
+    }
+
+    .card{
+      padding:24px 20px;
+    }
+
+    .foot-row{
+      flex-direction:column;
+      align-items:flex-start;
+    }
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{
+      scroll-behavior:auto;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<header>
+  <div class="nav">
+
+```
+<a href="index.html" class="brand">
+  <img
+    src="company_logo.png"
+    alt="Maximcine Studios"
+    class="brand-mark"
+  >
+  <span class="display">Maximcine Studios</span>
+</a>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="nebula-strike.html">Nebula Strike</a></li>
+    <li><a href="studio.html">Studio</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+```
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+
+```
+<div class="wrap">
+
+  <div class="eyebrow">
+    NEBULA STRIKE // PLAYER DATA
+  </div>
+
+  <h1 class="display">
+    Account & <span class="accent">Data Deletion</span>
+  </h1>
+
+  <p>
+    Manage deletion of your Nebula Strike: Galactic Assault
+    player profile and associated cloud-saved game data.
+  </p>
+
+</div>
+```
+
+  </section>
+
+  <div class="wrap">
+
+```
+<section class="card">
+
+  <h2>About your player data</h2>
+
+  <p>
+    Nebula Strike: Galactic Assault allows players to create an
+    in-game profile using a callsign (username) and a predefined
+    avatar. The game can also store gameplay progress using cloud
+    save functionality.
+  </p>
+
+  <div class="highlight">
+    <strong>Data associated with your player profile may include:</strong>
+
+    <ul>
+      <li>Your in-game callsign/username</li>
+      <li>Your selected predefined avatar</li>
+      <li>Game progress and saved level information</li>
+      <li>Unlocked skins and weapon progression</li>
+      <li>Coins and other game-progress information</li>
+      <li>Daily reward/progression information</li>
+    </ul>
+  </div>
+
+  <p>
+    Nebula Strike does not require a password, email address,
+    telephone number, OAuth login, or social-media login to create
+    an in-game player profile.
+  </p>
+
+</section>
+
+
+<section class="card">
+
+  <h2>How to request deletion</h2>
+
+  <p>
+    If you would like your Nebula Strike player profile and
+    associated cloud-saved game data deleted, follow these steps:
+  </p>
+
+  <ol class="steps">
+
+    <li>
+      Contact Maximcine Studios through our
+      <strong>Contact</strong> page.
+    </li>
+
+    <li>
+      State that you are requesting deletion of your
+      <strong>Nebula Strike: Galactic Assault</strong>
+      player data.
+    </li>
+
+    <li>
+      Provide your in-game callsign/username and, where available,
+      your player ID so that we can identify the correct player
+      record.
+    </li>
+
+    <li>
+      We will review the request and delete the applicable
+      player profile and associated cloud-saved game data.
+    </li>
+
+  </ol>
+
+  <div class="btn-row">
+
+    <a
+      class="btn btn-primary"
+      href="contact.html"
+    >
+      Request Data Deletion
+    </a>
+
+    <a
+      class="btn btn-ghost"
+      href="index.html"
+    >
+      Return Home
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="card">
+
+  <h2>What will be deleted?</h2>
+
+  <p>
+    When a valid deletion request is processed, Maximcine Studios
+    will delete the player's applicable cloud-stored profile and
+    game-save information associated with the identified player
+    record.
+  </p>
+
+  <ul>
+    <li>In-game callsign/username</li>
+    <li>Selected avatar information</li>
+    <li>Cloud-saved gameplay progress</li>
+    <li>Game progression and unlock information</li>
+    <li>Other information contained in the player's applicable cloud save</li>
+  </ul>
+
+  <div class="warning">
+    <strong>Important:</strong>
+    Deleting your player data may permanently remove your
+    cloud-saved game progress. Deleted game progress may not be
+    recoverable.
+  </div>
+
+</section>
+
+
+<section class="card">
+
+  <h2>Data that may be retained</h2>
+
+  <p>
+    Certain information may need to be retained where required by
+    law, for security, fraud prevention, financial records, or
+    other legitimate legal obligations. Where retention is
+    required, the information will be retained only for the period
+    necessary for that purpose.
+  </p>
+
+  <p>
+    Data processed by third-party services may also be subject to
+    those providers' applicable privacy and retention practices.
+    Please refer to our
+    <a
+      href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color:var(--accent);"
+    >
+      Privacy Policy
+    </a>
+    for additional information.
+  </p>
+
+</section>
+
+
+<div class="updated">
+  LAST UPDATED: SEPTEMBER 2026
+</div>
+```
+
+  </div>
+
+</main>
+
+<footer>
+
+  <div class="foot-row">
+
+```
+<span>
+  © <span id="year"></span> Maximcine Studios.
+  All rights reserved.
+</span>
+
+<ul class="foot-links">
+
+  <li>
+    <a
+      href="https://play.google.com/store/apps/details?id=com.nebulastrike.game"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Google Play
+    </a>
+  </li>
+
+  <li>
+    <a
+      href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Privacy Policy
+    </a>
+  </li>
+
+  <li>
+    <a href="contact.html">
+      Contact
+    </a>
+  </li>
+
+</ul>
+```
+
+  </div>
+
+</footer>
+
+<script>
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+
+  const reduceMotion =
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, stars = [];
+
+  function resize(){
+
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+
+    stars = Array.from(
+      {
+        length: Math.floor((w * h) / 6000)
+      },
+      () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.4 + 0.3,
+        speed: Math.random() * 0.18 + 0.03,
+        alpha: Math.random() * 0.6 + 0.25
+      })
+    );
+
+  }
+
+  window.addEventListener('resize', resize);
+
+  resize();
+
+  function draw(){
+
+    ctx.clearRect(0,0,w,h);
+
+    ctx.fillStyle = '#06070f';
+    ctx.fillRect(0,0,w,h);
+
+    for(const s of stars){
+
+      ctx.beginPath();
+
+      ctx.arc(
+        s.x,
+        s.y,
+        s.r,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        `rgba(241,242,251,${s.alpha})`;
+
+      ctx.fill();
+
+      if(!reduceMotion){
+
+        s.y += s.speed;
+
+        if(s.y > h){
+          s.y = 0;
+        }
+
+      }
+
+    }
+
+    requestAnimationFrame(draw);
+
+  }
+
+  draw();
+
+</script>
+
+</body>
+</html>
