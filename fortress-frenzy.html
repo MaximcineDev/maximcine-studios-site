@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fortress Frenzy — Coming Soon | Maximcine Studios</title>
+<meta name="description" content="Fortress Frenzy is coming soon to Android. Discover fantasy castle battles and a planned 30-mission city-inspired campaign beginning in Africa.">
+<link rel="icon" type="image/png" href="company_logo.png">
+<link rel="apple-touch-icon" href="company_logo.png">
+<link rel="canonical" href="https://maximcinestudios.site/fortress-frenzy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #050710;
+    --bg-soft: #090c1a;
+    --panel: #0c0f20;
+    --panel-2: #10142b;
+    --line: rgba(255,255,255,0.09);
+    --line-soft: rgba(255,255,255,0.05);
+    --text: #eef1fa;
+    --text-dim: #8b8fae;
+    --accent: #2fc0ff;
+    --accent-2: #6f4de0;
+    --gold: #f0b429;
+    --chrome: #dfe4f0;
+    --radius: 16px;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+
+  .display{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+
+  #stars{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::before{
+    content:'';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle at center, rgba(111,77,224,0.24), rgba(47,192,255,0.10) 45%, transparent 70%);
+    filter: blur(10px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(6,7,15,0.7);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size: 1.05rem;
+  }
+  .brand-mark{
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 30px;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+  }
+  nav ul a{ transition: color 0.15s ease; }
+  nav ul a:hover, nav ul a.active{ color: var(--accent); }
+
+  /* Mobile Menu Toggle */
+  .menu-toggle{
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 100;
+  }
+  .menu-toggle span{
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+  .menu-toggle.active span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.active span:nth-child(2){
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3){
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(5,7,16,0.98);
+    backdrop-filter: blur(20px);
+    z-index: 99;
+    padding: 80px 28px 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .mobile-menu.active{
+    opacity: 1;
+    visibility: visible;
+  }
+  .mobile-menu ul{
+    list-style: none;
+  }
+  .mobile-menu li{
+    margin-bottom: 8px;
+  }
+  .mobile-menu a{
+    display: block;
+    padding: 16px 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 1px solid var(--line-soft);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+  .mobile-menu a:hover{
+    color: var(--accent);
+    padding-left: 12px;
+  }
+
+  .hero{
+    padding: 100px 0 100px;
+    position: relative;
+    border-top: none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px; height:8px;
+    border-radius:50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.35; }
+  }
+  h1{
+    font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+    line-height: 1.05;
+  }
+  h1 .accent{
+    background: linear-gradient(100deg, var(--chrome) 0%, var(--accent) 55%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p{
+    margin-top: 22px;
+    max-width: 480px;
+    color: var(--text-dim);
+    font-size: 1.06rem;
+  }
+  .cta-row{
+    display:flex;
+    gap: 14px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    color: #fff;
+    box-shadow: 0 8px 30px -6px rgba(47,192,255,0.5);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 34px -6px rgba(47,192,255,0.65); }
+  .btn-ghost{
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .hud{
+    margin-top: 56px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    padding: 20px 26px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 560px;
+  }
+  .hud-item .mono{
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hud-item .val{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  .hero-art{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--line), 0 30px 70px -20px rgba(47,192,255,0.35);
+  }
+  .hero-art img{
+    width: 100%;
+    height: auto;
+    display: block;
+    -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+  }
+
+  footer{
+    border-top: 1px solid var(--line-soft);
+    padding: 46px 0;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+  .foot-links{ display:flex; gap: 22px; list-style:none; }
+  .foot-links a{ transition: color 0.15s ease; }
+  .foot-links a:hover{ color: var(--accent); }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-art{ order: -1; max-width: 360px; margin: 0 auto; }
+    .hud{ grid-template-columns: 1fr; }
+    nav ul{ display:none; }
+    .menu-toggle{ display: block; }
+    .mobile-menu{ display: block; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow::before{ animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+
+
+<link rel="stylesheet" href="studio-updates.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<canvas id="stars"></canvas>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="company_logo.png" alt="Maximcine Studios" class="brand-mark">
+      <span class="display">Maximcine Studios</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="nebula-strike.html">Nebula Strike</a></li>
+        <li><a href="fortress-frenzy.html">Fortress Frenzy</a></li>
+        <li><a href="studio.html">Studio</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="nebula-strike.html">Nebula Strike</a></li>
+        <li><a href="fortress-frenzy.html">Fortress Frenzy</a></li>
+    <li><a href="studio.html">Studio</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<main id="main-content">
+<section class="launch" aria-labelledby="fortress-title">
+  <div class="wrap launch-grid">
+    <div>
+      <div class="eyebrow">COMING SOON · IN DEVELOPMENT</div>
+      <h1 class="display" id="fortress-title">Fortress <span class="gold">Frenzy.</span></h1>
+      <p>Your castle. Your aim. Your next conquest. Prepare for colourful fantasy battles, a city-inspired campaign and a growing challenge with every mission.</p>
+      <div class="launch-tags"><span>COMING SOON</span><span>ANDROID</span><span>CASTLE BATTLES</span></div>
+      <div class="cta-row"><a class="btn btn-gold" href="#the-game">Explore the game <span aria-hidden="true">↓</span></a><a class="btn btn-ghost" href="terms-of-service.html#fortress-frenzy">Game terms</a></div>
+      <p class="release-note">In development. Release date to be announced.</p>
+    </div>
+    <figure class="launch-art"><a href="fortress-frenzy.html" aria-label="Explore Fortress Frenzy, coming soon"><img src="fortress-frenzy-hero.jpg" width="900" height="600" alt="Fortress Frenzy title above colourful knights preparing to storm a fantasy castle" fetchpriority="high"></a><figcaption>FORTRESS FRENZY · COMING SOON TO ANDROID</figcaption></figure>
+  </div>
+</section>
+<section class="feature-section" id="the-game" aria-label="Planned game features"><div class="wrap feature-cards">
+<article class="feature-card"><div class="mono">01 / AIM &amp; DEFEND</div><h2 class="display">Make every shot count.</h2><p>Adjust your aim, launch your attacks and protect your fortress. Jump into a quick battle or take on the campaign.</p></article>
+<article class="feature-card"><div class="mono">02 / A WORLD CAMPAIGN</div><h2 class="display">Africa first. Then the world.</h2><p>A planned 30-mission journey begins in major African cities, with distinctive landmarks behind the action and difficulty that builds as you progress.</p></article>
+<article class="feature-card"><div class="mono">03 / BUILD YOUR LEGACY</div><h2 class="display">Earn gold. Make it yours.</h2><p>Earn in-game gold, unlock later missions and customise your castle. Choose a player name and flag for your battle identity.</p></article>
+</div></section>
+<div class="wrap"><section class="release-panel" aria-labelledby="release-title"><h2 class="display" id="release-title">The gates aren’t open yet.</h2><p>Fortress Frenzy is in development for Android. Online opponent battles are also in development. Features, balance and availability may change before launch; no release date or pre-registration is announced yet.</p><div class="cta-row"><a class="btn btn-ghost" href="contact.html">Contact the studio</a><a class="btn btn-ghost" href="nebula-strike.html">Play Nebula Strike while you wait</a></div></section></div></main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© <span id="year"></span> Maximcine Studios. All rights reserved.</span>
+    <ul class="foot-links">
+      <li><a href="terms-of-service.html">Terms of Service</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.nebulastrike.game" target="_blank">Google Play</a></li>
+      <li><a href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      <li><a href="game-delete-account.html">Delete Account</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile Menu Toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close menu when clicking a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Starfield animation
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, stars = [];
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    stars = Array.from({length: Math.floor((w*h)/6000)}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*1.4 + 0.3,
+      speed: Math.random()*0.18 + 0.03,
+      alpha: Math.random()*0.6 + 0.25
+    }));
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = '#06070f';
+    ctx.fillRect(0,0,w,h);
+    for(const s of stars){
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(241,242,251,${s.alpha})`;
+      ctx.fill();
+      if(!reduceMotion){
+        s.y += s.speed;
+        if(s.y > h) s.y = 0;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+</body>
+</html>
