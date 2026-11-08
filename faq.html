@@ -129,7 +129,7 @@
     background: var(--gold);
     box-shadow: 0 0 12px var(--gold);
   }
-  .section-head h2{ font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .section-head :is(h1,h2){ font-size: clamp(1.6rem, 3vw, 2.2rem); }
 
   .faq{ max-width: 760px; }
   .faq-item{
@@ -229,8 +229,10 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="studio-updates.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <canvas id="stars"></canvas>
 
@@ -243,20 +245,22 @@
     <nav>
       <ul>
         <li><a href="nebula-strike.html">Nebula Strike</a></li>
+        <li><a href="fortress-frenzy.html">Fortress Frenzy</a></li>
         <li><a href="studio.html">Studio</a></li>
         <li><a href="faq.html" class="active">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+<details class="compact-nav"><summary>Menu</summary><div><a href="index.html">Home</a><a href="nebula-strike.html">Nebula Strike</a><a href="fortress-frenzy.html">Fortress Frenzy</a><a href="studio.html">Studio</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div></details>
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <section id="faq">
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">FAQ</div>
-        <h2 class="display">Frequently asked questions</h2>
+        <h1 class="display">Frequently asked questions</h1>
       </div>
       <div class="faq">
         <div class="faq-item">
@@ -287,6 +291,7 @@
   <div class="wrap foot-row">
     <span>© <span id="year"></span> Maximcine Studios. All rights reserved.</span>
     <ul class="foot-links">
+      <li><a href="terms-of-service.html">Terms of Service</a></li>
       <li><a href="https://play.google.com/store/apps/details?id=com.nebulastrike.game" target="_blank">Google Play</a></li>
       <li><a href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
       <li><a href="contact.html">Contact</a></li>
