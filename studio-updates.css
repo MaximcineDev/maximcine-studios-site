@@ -1,0 +1,72 @@
+
+/* Studio game announcements and legal pages */
+:focus-visible { outline: 3px solid #f0b429; outline-offset: 5px; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 200; background: #fff; color: #050710; padding: 12px 18px; }
+.skip-link:focus { top: 12px; }
+.foot-links { flex-wrap: wrap; }
+.foot-row > * { min-width: 0; }
+.foot-links a { overflow-wrap: anywhere; }
+.launch { padding: 64px 0 72px; }
+.launch-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: center; }
+.launch .eyebrow { color: #f0c76a; margin-bottom: 18px; }
+.launch .eyebrow::before { background: #f0c76a; box-shadow: 0 0 12px #f0b429; }
+.launch h1, .launch h2 { font-size: clamp(2.35rem, 5vw, 4.3rem); line-height: 1.07; }
+.launch .gold { color: #f0c76a; }
+.launch p { color: #b5b8ce; margin: 22px 0 0; max-width: 540px; }
+.launch-art { margin: 0; border: 1px solid #8e682b; border-radius: 20px; overflow: hidden; box-shadow: 0 22px 70px #0008; background: #10142b; }
+.launch-art img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.launch-art figcaption { padding: 12px 18px; font-size: .78rem; color: #b5b8ce; border-top: 1px solid var(--line); }
+.launch-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+.launch-tags span { font-size: .74rem; padding: 6px 12px; border: 1px solid #f0b42944; border-radius: 100px; color: #e7ce9b; background: #f0b4290a; }
+.btn-gold { background: #f0c76a; color: #17101f; }
+.btn-gold:hover { background: #ffda8a; transform: translateY(-2px); }
+.release-note { font-size: .85rem; }
+.existing-game { border-top: 1px solid var(--line); padding-top: 76px; }
+.existing-game h2 { font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.1; }
+.existing-game h2 .accent { color: var(--accent); }
+.feature-section { padding: 10px 0 70px; }
+.feature-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.feature-card { border: 1px solid var(--line); background: var(--panel); border-radius: 16px; padding: 26px; }
+.feature-card .mono { color: #f0c76a; font-size: .76rem; }
+.feature-card h2 { font-size: 1.18rem; margin: 16px 0 10px; }
+.feature-card p { font-size: .94rem; color: #b5b8ce; }
+.release-panel { margin-bottom: 70px; padding: 30px; border: 1px solid #f0b42944; background: #f0b42908; border-radius: 16px; }
+.release-panel h2 { font-size: 1.5rem; margin-bottom: 12px; }
+.release-panel p { color: #b5b8ce; }
+.legal-heading { padding: 64px 0 34px; }
+.legal-heading h1 { max-width: 800px; }
+.legal-heading p { margin-top: 20px; color: #b5b8ce; max-width: 780px; }
+.legal-date { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: #f0c76a !important; }
+.legal-layout { display: grid; grid-template-columns: 230px minmax(0,1fr); gap: 42px; padding-bottom: 80px; align-items: start; }
+.legal-toc { position: sticky; top: 100px; border: 1px solid var(--line); background: var(--panel); padding: 22px; border-radius: 14px; }
+.legal-toc ol { padding-left: 20px; }
+.legal-toc li { margin: 10px 0; font-size: .84rem; color: #b5b8ce; }
+.legal-toc a:hover { color: var(--accent); }
+.legal-copy section { margin-bottom: 32px; scroll-margin-top: 110px; }
+.legal-copy h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 12px; }
+.legal-copy p, .legal-copy li { color: #b5b8ce; margin-bottom: 14px; }
+.legal-copy ul { padding-left: 22px; }
+.legal-copy a { color: #66d0ff; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.legal-copy strong { color: #eef1fa; }
+@media(max-width:860px) {
+ .launch-grid { grid-template-columns: 1fr; gap: 30px; }
+ .launch { padding: 42px 0 50px; }
+ .launch-art { max-width: 680px; }
+ .feature-cards { grid-template-columns: 1fr; }
+ .legal-layout { grid-template-columns: 1fr; gap: 28px; }
+ .legal-toc { position: static; }
+ .nav { gap: 10px; }
+ .brand { font-size: .95rem; }
+ .foot-links { gap: 14px 20px; }
+ .cta-row { margin-top: 26px; }
+ .wrap { padding-left: 20px; padding-right: 20px; }
+}
+@media(prefers-reduced-motion:reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+.compact-nav { display:none; position:relative; }
+.compact-nav summary { cursor:pointer; padding:8px; }
+.compact-nav > div { position:absolute; right:0; min-width:220px; background:#0c0f20; border:1px solid #ffffff26; border-radius:12px; padding:10px; z-index:30; }
+.compact-nav a { display:block; padding:10px; }
+@media(max-width:860px){ .compact-nav{display:block;} }
+
+.legal-copy code { overflow-wrap: anywhere; }
