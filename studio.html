@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Maximcine Studios | Indie Mobile Game Developer</title>
-<meta name="description" content="Maximcine Studios is an independent mobile games studio. Meet the team behind Nebula Strike: Galactic Assault.">
+<meta name="description" content="Maximcine Studios is an independent mobile games studio. Meet the studio behind Nebula Strike: Galactic Assault and the upcoming Fortress Frenzy.">
 <link rel="icon" type="image/png" href="company_logo.png">
 <link rel="apple-touch-icon" href="company_logo.png">
 <link rel="canonical" href="https://maximcinestudios.site/studio.html">
@@ -138,7 +138,7 @@
     background: var(--gold);
     box-shadow: 0 0 12px var(--gold);
   }
-  .section-head h2{ font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .section-head :is(h1,h2){ font-size: clamp(1.6rem, 3vw, 2.2rem); }
 
   .stat-panel{
     border: 1px solid var(--line);
@@ -219,8 +219,10 @@
   "sameAs": "https://play.google.com/store/apps/details?id=com.nebulastrike.game"
 }
 </script>
+<link rel="stylesheet" href="studio-updates.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <canvas id="stars"></canvas>
 
@@ -233,27 +235,31 @@
     <nav>
       <ul>
         <li><a href="nebula-strike.html">Nebula Strike</a></li>
+        <li><a href="fortress-frenzy.html">Fortress Frenzy</a></li>
         <li><a href="studio.html" class="active">Studio</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+<details class="compact-nav"><summary>Menu</summary><div><a href="index.html">Home</a><a href="nebula-strike.html">Nebula Strike</a><a href="fortress-frenzy.html">Fortress Frenzy</a><a href="studio.html">Studio</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div></details>
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <section id="studio">
     <div class="wrap about">
       <div class="about-text">
         <div class="section-head" style="margin-bottom:22px;">
           <div class="eyebrow">The Studio</div>
-          <h2 class="display">Maximcine Studios</h2>
+          <h1 class="display">Maximcine Studios</h1>
         </div>
         <p>Maximcine Studios is an independent games studio building small, focused mobile games — the kind you open for five minutes and stay for twenty.</p>
         <p>Nebula Strike: Galactic Assault is our first release, built with Capacitor for Android with a strong emphasis on tight controls, fast feedback, and a game that respects your time.</p>
         <p>We're currently prototyping our next project — more on that soon.</p>
+        <p>Next up: Fortress Frenzy, a fantasy castle battle game with a city-inspired campaign beginning in Africa. Currently in development for Android.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="nebula-strike.html">Play Nebula Strike</a>
+          <a class="btn btn-ghost" href="fortress-frenzy.html">Fortress Frenzy — coming soon</a>
         </div>
       </div>
       <div class="stat-panel">
@@ -273,6 +279,7 @@
   <div class="wrap foot-row">
     <span>© <span id="year"></span> Maximcine Studios. All rights reserved.</span>
     <ul class="foot-links">
+      <li><a href="terms-of-service.html">Terms of Service</a></li>
       <li><a href="https://play.google.com/store/apps/details?id=com.nebulastrike.game" target="_blank">Google Play</a></li>
       <li><a href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
       <li><a href="contact.html">Contact</a></li>
