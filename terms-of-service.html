@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Fortress Frenzy &amp; Nebula Strike | Maximcine Studios</title>
+<meta name="description" content="Terms of Service for Maximcine Studios, Fortress Frenzy and Nebula Strike: purchases, virtual gold, online play, refunds and support.">
+<link rel="icon" type="image/png" href="company_logo.png">
+<link rel="apple-touch-icon" href="company_logo.png">
+<link rel="canonical" href="https://maximcinestudios.site/terms-of-service.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #050710;
+    --bg-soft: #090c1a;
+    --panel: #0c0f20;
+    --panel-2: #10142b;
+    --line: rgba(255,255,255,0.09);
+    --line-soft: rgba(255,255,255,0.05);
+    --text: #eef1fa;
+    --text-dim: #8b8fae;
+    --accent: #2fc0ff;
+    --accent-2: #6f4de0;
+    --gold: #f0b429;
+    --chrome: #dfe4f0;
+    --radius: 16px;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+
+  .display{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+
+  #stars{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  body::before{
+    content:'';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle at center, rgba(111,77,224,0.24), rgba(47,192,255,0.10) 45%, transparent 70%);
+    filter: blur(10px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(6,7,15,0.7);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size: 1.05rem;
+  }
+  .brand-mark{
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap: 30px;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+  }
+  nav ul a{ transition: color 0.15s ease; }
+  nav ul a:hover, nav ul a.active{ color: var(--accent); }
+
+  /* Mobile Menu Toggle */
+  .menu-toggle{
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 100;
+  }
+  .menu-toggle span{
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+  .menu-toggle.active span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.active span:nth-child(2){
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3){
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(5,7,16,0.98);
+    backdrop-filter: blur(20px);
+    z-index: 99;
+    padding: 80px 28px 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .mobile-menu.active{
+    opacity: 1;
+    visibility: visible;
+  }
+  .mobile-menu ul{
+    list-style: none;
+  }
+  .mobile-menu li{
+    margin-bottom: 8px;
+  }
+  .mobile-menu a{
+    display: block;
+    padding: 16px 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 1px solid var(--line-soft);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+  .mobile-menu a:hover{
+    color: var(--accent);
+    padding-left: 12px;
+  }
+
+  .hero{
+    padding: 100px 0 100px;
+    position: relative;
+    border-top: none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px; height:8px;
+    border-radius:50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.35; }
+  }
+  h1{
+    font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+    line-height: 1.05;
+  }
+  h1 .accent{
+    background: linear-gradient(100deg, var(--chrome) 0%, var(--accent) 55%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p{
+    margin-top: 22px;
+    max-width: 480px;
+    color: var(--text-dim);
+    font-size: 1.06rem;
+  }
+  .cta-row{
+    display:flex;
+    gap: 14px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    color: #fff;
+    box-shadow: 0 8px 30px -6px rgba(47,192,255,0.5);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 34px -6px rgba(47,192,255,0.65); }
+  .btn-ghost{
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .hud{
+    margin-top: 56px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    padding: 20px 26px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 560px;
+  }
+  .hud-item .mono{
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hud-item .val{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  .hero-art{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--line), 0 30px 70px -20px rgba(47,192,255,0.35);
+  }
+  .hero-art img{
+    width: 100%;
+    height: auto;
+    display: block;
+    -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+  }
+
+  footer{
+    border-top: 1px solid var(--line-soft);
+    padding: 46px 0;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+  .foot-links{ display:flex; gap: 22px; list-style:none; }
+  .foot-links a{ transition: color 0.15s ease; }
+  .foot-links a:hover{ color: var(--accent); }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-art{ order: -1; max-width: 360px; margin: 0 auto; }
+    .hud{ grid-template-columns: 1fr; }
+    nav ul{ display:none; }
+    .menu-toggle{ display: block; }
+    .mobile-menu{ display: block; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow::before{ animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+
+
+<link rel="stylesheet" href="studio-updates.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<canvas id="stars"></canvas>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="company_logo.png" alt="Maximcine Studios" class="brand-mark">
+      <span class="display">Maximcine Studios</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="nebula-strike.html">Nebula Strike</a></li>
+        <li><a href="fortress-frenzy.html">Fortress Frenzy</a></li>
+        <li><a href="studio.html">Studio</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="nebula-strike.html">Nebula Strike</a></li>
+        <li><a href="fortress-frenzy.html">Fortress Frenzy</a></li>
+    <li><a href="studio.html">Studio</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<main id="main-content"><div class="wrap"><header class="legal-heading" style="position:static;background:none;backdrop-filter:none;border:0"><div class="eyebrow">MAXIMCINE STUDIOS / LEGAL</div><h1 class="display">Terms of Service</h1><p>For our website, Nebula Strike: Galactic Assault and Fortress Frenzy. Read the game-specific details, purchase terms and your rights below.</p><p class="legal-date">Last updated: 8 November 2026</p></header><div class="legal-layout"><aside class="legal-toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#scope">What these terms cover</a></li><li><a href="#fortress-frenzy">Fortress Frenzy: release status and game features</a></li><li><a href="#eligibility">Eligibility and permitted use</a></li><li><a href="#profiles">Profiles, progress and device storage</a></li><li><a href="#purchases">Purchases, gold and virtual items</a></li><li><a href="#refunds">Refunds and purchase support</a></li><li><a href="#online">Online play and fair conduct</a></li><li><a href="#ads">Advertisements and external services</a></li><li><a href="#privacy">Privacy and data requests</a></li><li><a href="#ownership">Creative work and intellectual property</a></li><li><a href="#availability">Updates, availability and responsibility</a></li><li><a href="#changes">Changes, questions and disputes</a></li></ol></aside><article class="legal-copy" aria-label="Terms of Service"><section id="scope"><h2>1. What these terms cover</h2><p>These Terms of Service apply to the Maximcine Studios website and our games, including <strong>Nebula Strike: Galactic Assault</strong> and <strong>Fortress Frenzy</strong>, together with related updates and online features. Maximcine Studios is the developer and operator of these services.</p><p>By using the services, you agree to these terms. If you do not agree, stop using them. App-store terms and applicable third-party terms also apply where relevant. Nothing here limits rights you have under mandatory consumer protection law.</p></section><section id="fortress-frenzy"><h2>2. Fortress Frenzy: release status and game features</h2><p><strong>These terms specifically cover Fortress Frenzy</strong>, our fantasy castle battle game for Android (package: <code>com.maximcinestudios.fortressfrenzy</code>).</p><p>Fortress Frenzy is currently in development and has not been publicly launched. Announced features and artwork describe development plans and may change. No release date, online availability, specific device support or permanent availability is promised by a coming-soon announcement.</p><p>Where enabled in the version you use, the game may include offline battles, missions, earned gold, upgrades, castle skins, optional gold purchases, advertisements and online matches. Access to some content may require progress or virtual currency. The applicable prices and requirements are shown in the game.</p></section><section id="eligibility"><h2>3. Eligibility and permitted use</h2><p>Follow the age rating and eligibility requirements shown by your app store. If you are below the age of legal adulthood where you live, a parent or guardian should review these terms with you and authorise purchases where required.</p><p>We grant you a personal, limited, non-exclusive, non-transferable permission to use the services for lawful, non-commercial entertainment, subject to these terms. You do not acquire ownership of the software or artwork.</p></section><section id="profiles"><h2>4. Profiles, progress and device storage</h2><p>In the current Fortress Frenzy design, your display name, chosen country flag and game progress are stored on your device; creating this local profile does not create a password-protected studio account. Online play, when available, transmits your selected name, flag and match information to the game server and displays relevant information to opponents.</p><p>Choose an appropriate display name. Do not impersonate someone else, include private contact information, or use hateful, threatening, sexually explicit or unlawful names.</p><p>Unless a particular game version explicitly provides cloud saving, do not assume progress, earned or purchased virtual currency, or consumed items will transfer to another device or be recoverable after uninstalling, clearing app data or resetting progress. Contact support about purchase or recovery problems; this does not limit your statutory rights. Other games may offer different saving or profile features, as explained in their interfaces and privacy notices.</p></section><section id="purchases"><h2>5. Purchases, gold and virtual items</h2><p>Purchases are optional. On Google Play, in-app purchases are processed through Google Play Billing. Review the item description, final price, currency and any applicable taxes in the purchase screen before confirming. Do not make purchases without permission from the payment-method owner.</p><p>Gold, skins, upgrades and other virtual items provide benefits only within the relevant game. They are not real money, cryptocurrency, investments or deposits. They cannot be cashed out, transferred between players, or exchanged for real-world goods through our services. Purchased items provide a limited right to use the item as described, subject to applicable law.</p><p>Gold packs are consumable purchases. Spending gold reduces the balance, and a purchase is not a promise of unlimited access or future content. We may adjust game balance and future offers, but will respect applicable purchase descriptions and consumer rights.</p><p>For a missing purchase, contact <a href="mailto:maximcinedev.team@gmail.com">maximcinedev.team@gmail.com</a> with the game name, purchase date and Google Play order number. Never send your full payment-card details, password or verification codes.</p></section><section id="refunds"><h2>6. Refunds and purchase support</h2><p>Refund eligibility depends on the circumstances, the applicable app-store policy and the law where you live. You can request support from us or use <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener noreferrer">Google Play’s refund process</a>. These terms do not impose a blanket “no refunds” rule or remove any right to a refund, repair or other remedy required by law.</p><p>If a purchase is refunded or reversed, the associated virtual entitlement may be removed or adjusted where supported and permitted by law. We will review purchase disputes in good faith.</p></section><section id="online"><h2>7. Online play and fair conduct</h2><p>Online features require a working internet connection and an available game server. Matchmaking depends on other players and may involve waiting, interrupted sessions or temporary unavailability. Your network provider may charge for data.</p><p>Do not cheat, use modified clients or automated play to gain an unfair advantage, exploit bugs, manipulate purchases or scores, attack servers, interfere with other players, or attempt unauthorised access. Do not use the services for harassment or unlawful conduct.</p><p>We may investigate abuse and restrict access to affected online features when reasonably necessary to protect players or the service. Where appropriate, we will explain the reason and allow you to contact support for review. Any restriction will be subject to applicable law and existing consumer rights.</p></section><section id="ads"><h2>8. Advertisements and external services</h2><p>Games may display advertisements, including optional rewarded advertisements and interstitial advertisements. A reward is available only when the stated completion conditions are met and the ad provider confirms completion. Ads may be unavailable, and their presence does not guarantee a particular reward or uninterrupted supply.</p><p>Ad destinations, app stores and other external services are operated by third parties. Their own terms and privacy policies apply. Our use of those providers does not remove any legal responsibilities we have to you.</p></section><section id="privacy"><h2>9. Privacy and data requests</h2><p>Our <a href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> explains how information is handled, including relevant third-party services. These terms do not replace that policy or any consent required by law.</p><p>For questions or requests concerning your data, email <a href="mailto:maximcinedev.team@gmail.com">maximcinedev.team@gmail.com</a> and identify the game and request. See the <a href="game-delete-account.html">Nebula Strike account and data deletion page</a> for that game’s process. Fortress Frenzy’s local profile is separate from any Nebula Strike account; clearing local data does not itself delete records held by independent payment or ad providers.</p></section><section id="ownership"><h2>10. Creative work and intellectual property</h2><p>Game code, names, logos, illustrations, music and website content are owned by Maximcine Studios or used under permission or licence. Do not redistribute or sell our games, extract and resell assets, or use our branding to imply an official partnership without permission. Exceptions and rights provided by law remain unaffected.</p><p>You may share your own gameplay screenshots and videos for reviews, streams and community discussion, provided you do not misrepresent your relationship with us or infringe third-party rights.</p></section><section id="availability"><h2>11. Updates, availability and responsibility</h2><p>We may release updates to fix bugs, improve security and adjust gameplay. Some features may require the latest version. We do not promise that every service will always be available, error-free or compatible with every device.</p><p>If we materially change or discontinue an online feature, we will give reasonable notice where practicable and honour any remedies required by law. Development previews are not a guarantee of future functionality.</p><p>To the extent permitted by law, we are not responsible for losses caused solely by circumstances outside our reasonable control, such as your network failure or unauthorised modifications to your device. Nothing in these terms excludes liability that cannot legally be excluded, including liability for fraud, or limits mandatory consumer guarantees or remedies.</p></section><section id="changes"><h2>12. Changes, questions and disputes</h2><p>We may update these terms to reflect changes to the services or legal requirements. The date at the top identifies the current version. Material changes will be communicated through an appropriate website or in-game notice, and we will seek consent where required. Changes will not retrospectively remove rights attached to completed purchases.</p><p>Please contact us first about a concern so we can try to resolve it. You retain access to any courts, regulators and dispute-resolution mechanisms available under applicable law; these terms do not require private arbitration or waive mandatory rights.</p><p><strong>Maximcine Studios</strong><br>Email: <a href="mailto:maximcinedev.team@gmail.com">maximcinedev.team@gmail.com</a><br>Website: <a href="https://maximcinestudios.site/">maximcinestudios.site</a></p></section></article></div></div></main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© <span id="year"></span> Maximcine Studios. All rights reserved.</span>
+    <ul class="foot-links">
+      <li><a href="terms-of-service.html">Terms of Service</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.nebulastrike.game" target="_blank">Google Play</a></li>
+      <li><a href="https://maximcinedev.github.io/Maximcine-Studios-Privacy-Policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      <li><a href="game-delete-account.html">Delete Account</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile Menu Toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close menu when clicking a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Starfield animation
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, stars = [];
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    stars = Array.from({length: Math.floor((w*h)/6000)}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*1.4 + 0.3,
+      speed: Math.random()*0.18 + 0.03,
+      alpha: Math.random()*0.6 + 0.25
+    }));
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = '#06070f';
+    ctx.fillRect(0,0,w,h);
+    for(const s of stars){
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(241,242,251,${s.alpha})`;
+      ctx.fill();
+      if(!reduceMotion){
+        s.y += s.speed;
+        if(s.y > h) s.y = 0;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+</body>
+</html>
